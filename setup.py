@@ -19,7 +19,7 @@ setup(
     version = muirc.__version__,
     author = muirc.__author__,
     author_email = muirc.__email__,
-    url = "http://gawen.me/p/muirc",
+    url = "https://github.com/Gawen/muirc",
     license = muirc.__license__,
     classifiers = [
         "Development Status :: 5 - Production/Stable",
