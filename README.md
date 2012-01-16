@@ -1,7 +1,7 @@
 The ``muirc`` module
 ====================
 
-``muirc`` is a minimalist & efficient Python module to create IRC. It was developed in a way to make thins simpler in a Pythonic way.
+``muirc`` is a minimalist & efficient Python module to parse & create IRC messages. It does the job, and only the job, in a Pythonic way.
 
 Parse & create IRC messages
 ---------------------------
