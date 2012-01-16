@@ -50,7 +50,7 @@ Proxy methods are provided to easily send IRC messages. The case is not importan
     >>> conn.nick("muirc")
     >>> conn.UsEr("a", "a", "a", "a")
 
-This class provides an iterator interface which yields a parsed object every time a IRC message is received. This option provides an easy&pythonic way to create an simple IRC way.
+This class provides an iterator interface which yields a parsed object every time a IRC message is received. This option provides an easy&pythonic way to create an simple IRC client.
 
 The following example connects to FreeNode, join #muirc and send a hello world message.
 
