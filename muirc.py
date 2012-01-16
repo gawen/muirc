@@ -35,6 +35,7 @@ def translate(m):
         return m
 
     else:
+        # msg -> str
         def gen():
             if m.get("nick", None):
                 yield ":" + m["nick"]
@@ -85,13 +86,16 @@ class Connection(object):
         return translate(m.strip()) if m else None
 
     def send(self, **m):
+        """ Sends a IRC message. """
         with self.write_lock:
             return self._send(m)
 
     def recv(self, timeout = None):
+        """ Receives a parsed IRC message. """
         return self._recv(timeout = timeout)
 
     def iter(self, timeout = None):
+        """ Iterator interface providing an easy way to create process loops. """
         while True:
             r = self.recv(timeout)
             if not r: break
@@ -101,6 +105,7 @@ class Connection(object):
         return self.iter()
 
     def __getattr__(self, command):
+        """ If method is not found, returns a function proxy to send IRC commands. """
         def command_proxy(*args, **kwargs):
             return self.send(
                 nick = kwargs.get("nick", None),
