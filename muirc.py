@@ -57,14 +57,23 @@ def translate(m):
         return "".join(gen())
 
 class Connection(object):
-    def __new__(cls, o):
+    def __new__(cls, o, use_ssl = None):
+        use_ssl = use_ssl if use_ssl is not None else False
+
         if isinstance(o, cls) or o is None:
             return o
         
         self = super(Connection, cls).__new__(cls)
         
         if isinstance(o, (tuple, list, )) and len(o) == 2:
-            o = socket.create_connection(o)
+            s = socket.socket()
+
+            if use_ssl:
+                import ssl
+                s = ssl.wrap_socket(s)
+
+            s.connect(o)
+            o = s
 
         assert isinstance(o, socket.socket)
         self.s = o
